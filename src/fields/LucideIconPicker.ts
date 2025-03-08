@@ -1,5 +1,4 @@
 import { Field } from 'payload';
-import { IconSelectField } from '../admin/components/IconSelectField';
 
 // Define the icon configuration type
 export interface LucideIconPickerType {
@@ -10,7 +9,9 @@ export interface LucideIconPickerType {
   absoluteStrokeWidth?: boolean;
 }
 
-export const LucideIconPicker = (overrides = {}): Field => {
+type LucideIconPickerOverrides = Partial<Omit<Field, 'type' | 'name' | 'admin'>>;
+
+export const LucideIconPicker = (overrides: LucideIconPickerOverrides = {}): Field => {
   return {
     type: 'json' as const,
     name: 'LucideIconPicker',
