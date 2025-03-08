@@ -120,10 +120,11 @@ const ICONS_PER_PAGE = 60;
 export const IconSelectField: React.FC<IconSelectFieldProps> = (props) => {
   const { 
     path,
-    field: {
-      label = 'Lucide Icon Picker',
-    }
+    field
   } = props;
+
+  const label = field.label;
+  console.log(label);
   
   const { value = DEFAULT_ICON_CONFIG, setValue } = useField<LucideIconPickerType>({ path });
   
