@@ -32,12 +32,12 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/yourusername/payload-lucide-picker.git"
+    "url": "https://github.com/Vectras/payload-lucide-picker.git"
   },
   "bugs": {
-    "url": "https://github.com/yourusername/payload-lucide-picker/issues"
+    "url": "https://github.com/Vectras/payload-lucide-picker/issues"
   },
-  "homepage": "https://github.com/yourusername/payload-lucide-picker#readme",
+  "homepage": "https://github.com/Vectras/payload-lucide-picker/blob/master/README.md",
   "peerDependencies": {
     "@payloadcms/ui": ">=3.0.0",
     "lucide-react": ">=0.0.0",
