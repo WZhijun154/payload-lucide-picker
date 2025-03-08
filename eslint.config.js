@@ -31,13 +31,13 @@ export default [
       }
     },
     rules: {
-      'prettier/prettier': ['warn', await prettier.resolveConfig('.') ?? {}],
+      'prettier/prettier': 'off',
       'react/react-in-jsx-scope': 'off',
       'react/prop-types': 'off',
       '@typescript-eslint/explicit-module-boundary-types': 'off',
       '@typescript-eslint/no-explicit-any': 'warn',
       'no-unused-vars': 'off',
-      '@typescript-eslint/no-unused-vars': 'warn'
+      '@typescript-eslint/no-unused-vars': ['warn', { varsIgnorePattern: '^_', ignoreRestSiblings: true, argsIgnorePattern: '^_', ignoreImports: true }]
     }
   }
 ]; 

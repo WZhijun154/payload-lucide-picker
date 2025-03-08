@@ -102,12 +102,12 @@ interface IconProps extends LucideProps {
 // Preload and cache icons to improve performance
 const iconCache: Record<string, React.ComponentType<LucideProps>> = {};
 
-const Icon = React.memo(({ name, ...props }: IconProps) => {
+export const Icon = React.memo(({ name, ...props }: IconProps) => {
   // Use cached icon component if available
   if (!iconCache[name]) {
     iconCache[name] = dynamic(dynamicIconImports[name]);
   }
-  
+
   const LucideIcon = iconCache[name];
   return <LucideIcon {...props} />;
 });
@@ -124,7 +124,6 @@ export const IconSelectField: React.FC<IconSelectFieldProps> = (props) => {
   } = props;
 
   const label = field.label;
-  console.log(label);
   
   const { value = DEFAULT_ICON_CONFIG, setValue } = useField<LucideIconPickerType>({ path });
   
@@ -196,7 +195,7 @@ export const IconSelectField: React.FC<IconSelectFieldProps> = (props) => {
       ...value,
       [field]: newValue,
     });
-  }, [setValue, value]);
+}, [setValue, value]);
 
   // Close modal when clicking outside
   useEffect(() => {
