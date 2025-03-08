@@ -90,9 +90,9 @@ const useDebounce = <T,>(value: T, delay: number): T => {
 // Define proper props type for the component
 type IconSelectFieldProps = {
   path: string;
-  name?: string;
-  required?: boolean;
-  label?: string;
+  field: {
+    label: string;
+  };
 }
 
 interface IconProps extends LucideProps {
@@ -118,7 +118,13 @@ Icon.displayName = 'Icon';
 const ICONS_PER_PAGE = 60;
 
 export const IconSelectField: React.FC<IconSelectFieldProps> = (props) => {
-  const { path, label = 'Lucide Icon Picker' } = props;
+  const { 
+    path,
+    field: {
+      label = 'Lucide Icon Picker',
+    }
+  } = props;
+  
   const { value = DEFAULT_ICON_CONFIG, setValue } = useField<LucideIconPickerType>({ path });
   
   const [fieldIsFocused, setFieldIsFocused] = useState(false);
