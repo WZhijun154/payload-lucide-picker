@@ -24,6 +24,9 @@ jobs:
         with:
           version: latest
 
+      - name: Install dependencies
+        run: pnpm install
+
       # Rest of your workflow remains the same
 
       - name: Publish to GitHub Packages
