@@ -1,0 +1,72 @@
+{
+  "name": "payload-lucide-picker",
+  "version": "1.0.0",
+  "description": "A custom field for Payload CMS that allows you to select and configure Lucide icons in your admin panel",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "style": "dist/index.css",
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "clean": "rimraf dist",
+    "lint": "eslint src --ext .ts,.tsx",
+    "format": "prettier --write \"src/**/*.{ts,tsx}\"",
+    "prepare": "pnpm run build",
+    "prepublishOnly": "pnpm run lint && pnpm run build"
+  },
+  "keywords": [
+    "payload",
+    "cms",
+    "lucide",
+    "icon",
+    "picker",
+    "field",
+    "custom-field"
+  ],
+  "author": "Vectras",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yourusername/payload-lucide-picker.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/payload-lucide-picker/issues"
+  },
+  "homepage": "https://github.com/yourusername/payload-lucide-picker#readme",
+  "peerDependencies": {
+    "@payloadcms/ui": ">=3.0.0",
+    "lucide-react": ">=0.0.0",
+    "payload": ">=2.0.0",
+    "react": ">=17.0.0",
+    "react-dom": ">=17.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.9",
+    "@types/react": "^18.3.18",
+    "@typescript-eslint/eslint-plugin": "^7.18.0",
+    "@typescript-eslint/parser": "^7.18.0",
+    "eslint": "^8.57.1",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.2.3",
+    "eslint-plugin-react": "^7.37.4",
+    "eslint-plugin-react-hooks": "^4.6.2",
+    "payload": "^2.11.2",
+    "prettier": "^3.5.3",
+    "rimraf": "^5.0.10",
+    "sass": "^1.85.1",
+    "tsup": "^8.4.0",
+    "typescript": "^5.8.2"
+  },
+  "dependencies": {
+    "@payloadcms/ui": "^3.27.0",
+    "lucide-react": "^0.479.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
