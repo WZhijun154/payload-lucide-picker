@@ -9,7 +9,23 @@ export interface LucideIconPickerType {
   absoluteStrokeWidth?: boolean;
 }
 
-type LucideIconPickerOverrides = Partial<Omit<Field, 'type' | 'name' | 'admin'>>;
+// Define the icon data type
+export type LucideIconData = {
+  name: string;
+  size: number;
+  color: string;
+  strokeWidth: number;
+  absoluteStrokeWidth: boolean;
+}
+
+// Define the overrides type
+export type LucideIconPickerOverrides = Partial<{
+  name: string;
+  label: string;
+  required: boolean;
+  defaultValue: Partial<LucideIconData>;
+  admin: Record<string, any>;
+}>
 
 export const LucideIconPicker = (overrides: LucideIconPickerOverrides = {}): Field => {
   return {
