@@ -1,3 +1,6 @@
+import { Field } from 'payload';
+import { IconSelectField } from '../admin/components/IconSelectField';
+
 // Define the icon configuration type
 export interface LucideIconPickerType {
   name: string;
@@ -7,34 +10,11 @@ export interface LucideIconPickerType {
   absoluteStrokeWidth?: boolean;
 }
 
-/**
- * Creates an icon field that displays Lucide icons
- * This implementation uses a text field type to avoid database schema issues
- * while still providing the custom UI for icon selection
- *
- * Usage example:
- * ```typescript
- * import iconField from '../fields/iconField';
- *
- * const YourCollection = {
- *   fields: [
- *     {
- *       name: 'title',
- *       type: 'text'
- *     },
- *     iconField({
- *       name: 'featureIcon',
- *       label: 'Feature Icon'
- *     })
- *   ]
- * }
- * ```
- */
-export const LucideIconPicker = (overrides = {}) => {
+export const LucideIconPicker = (overrides = {}): Field => {
   return {
     type: 'json' as const,
-    name: 'icon',
-    label: 'Icon',
+    name: 'LucideIconPicker',
+    label: 'Lucide Icon Picker',
     defaultValue: {
       name: '',
       size: 24,
@@ -53,3 +33,5 @@ export const LucideIconPicker = (overrides = {}) => {
     ...overrides,
   };
 };
+
+export default LucideIconPicker;
