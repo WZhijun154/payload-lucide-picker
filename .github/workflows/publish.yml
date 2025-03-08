@@ -19,6 +19,11 @@ jobs:
           registry-url: 'https://npm.pkg.github.com'
           scope: '@vectras'
 
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: latest
+
       # Rest of your workflow remains the same
 
       - name: Publish to GitHub Packages
