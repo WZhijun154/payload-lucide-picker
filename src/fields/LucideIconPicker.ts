@@ -24,15 +24,14 @@ export type LucideIconPickerOverrides = Partial<{
   label: string;
   required: boolean;
   defaultValue: Partial<LucideIconData>;
-  admin: Record<string, any>;
 }>
 
 export const LucideIconPicker = (overrides: LucideIconPickerOverrides = {}): Field => {
   return {
     type: 'json' as const,
-    name: 'LucideIconPicker',
-    label: 'Lucide Icon Picker',
-    defaultValue: {
+    name: overrides.name || 'LucideIconPicker',
+    label: overrides.label || 'Lucide Icon Picker',
+    defaultValue: overrides.defaultValue || {
       name: '',
       size: 24,
       color: 'currentColor',
@@ -46,8 +45,7 @@ export const LucideIconPicker = (overrides: LucideIconPickerOverrides = {}): Fie
         },
       },
     },
-    required: true,
-    ...overrides,
+    required: overrides.required || false,
   };
 };
 
