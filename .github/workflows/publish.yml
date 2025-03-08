@@ -5,6 +5,11 @@ on:
     types: [created]
   workflow_dispatch:
 
+# Add explicit permissions to allow package publishing
+permissions:
+  contents: read
+  packages: write
+
 jobs:
   publish:
     runs-on: ubuntu-latest
