@@ -1,6 +1,6 @@
 {
   "name": "payload-lucide-picker",
-  "version": "1.3.5",
+  "version": "1.3.6",
   "description": "A custom field for Payload CMS that allows you to select and configure Lucide icons in your admin panel",
   "type": "module",
   "main": "dist/index.js",
