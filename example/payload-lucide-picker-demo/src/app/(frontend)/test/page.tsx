@@ -1,7 +1,7 @@
 import React from 'react';
 import { redirect } from 'next/navigation';
 import payload from 'payload';
-import { RenderBlocks } from '../components/RenderBlocks';
+import { RenderBlocks } from '../../../components/RenderBlocks';
 
 export default async function Home() {
   const pages = await payload.find({

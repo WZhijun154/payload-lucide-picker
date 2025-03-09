@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 import { FeaturesBlock } from '../blocks/Features/component';
+import { FeaturesBlock as FeaturesBlockType } from '@/payload-types';
 
 // More generic type to handle Payload's blocks
 export type BlockType = {
@@ -23,7 +24,7 @@ export const RenderBlocks: React.FC<BlockRendererProps> = ({ blocks }) => {
       {blocks.map((block, index) => {
         switch (block.blockType) {
           case 'features':
-            return <FeaturesBlock key={index} {...block} />;
+            return <FeaturesBlock key={index} {...block as FeaturesBlockType} />;
           default:
             return null;
         }
