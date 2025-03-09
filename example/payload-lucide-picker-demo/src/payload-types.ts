@@ -171,6 +171,15 @@ export interface FeaturesBlock {
     | {
         title: string;
         description: string;
+        featureIcon:
+          | {
+              [k: string]: unknown;
+            }
+          | unknown[]
+          | string
+          | number
+          | boolean
+          | null;
         id?: string | null;
       }[]
     | null;
@@ -297,6 +306,7 @@ export interface FeaturesBlockSelect<T extends boolean = true> {
     | {
         title?: T;
         description?: T;
+        featureIcon?: T;
         id?: T;
       };
   id?: T;

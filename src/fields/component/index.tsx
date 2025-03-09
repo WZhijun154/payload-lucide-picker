@@ -4,7 +4,7 @@ import { useField } from '@payloadcms/ui';
 import { LucideProps } from 'lucide-react';
 import dynamicIconImports from 'lucide-react/dynamicIconImports';
 import dynamic from 'next/dynamic';
-import { LucideIconPickerType } from '@/fields/LucideIconPicker';
+import { LucideIconPickerType } from '@/fields/lucide-icon-picker';
 import './index.scss';
 
 // Predefined options for size and stroke width
@@ -180,22 +180,22 @@ export const IconSelectField: React.FC<IconSelectFieldProps> = (props) => {
   }, [debouncedSearch]);
 
   // Handle icon selection
-  const handleIconSelect = useCallback((iconName: string) => {
-    setValue({
-      ...value,
-      name: iconName,
-    });
-    setFieldIsFocused(false);
-    setSearch('');
-  }, [setValue, value]);
+//   const handleIconSelect = useCallback((iconName: string) => {
+//     setValue({
+//       ...value,
+//       name: iconName,
+//     });
+//     setFieldIsFocused(false);
+//     setSearch('');
+//   }, [setValue, value]);
 
-  // Handle configuration changes
-  const handleConfigChange = useCallback((field: keyof LucideIconPickerType, newValue: any) => {
-    setValue({
-      ...value,
-      [field]: newValue,
-    });
-}, [setValue, value]);
+//   // Handle configuration changes
+//   const handleConfigChange = useCallback((field: keyof LucideIconPickerType, newValue: any) => {
+//     setValue({
+//       ...value,
+//       [field]: newValue,
+//     });
+// }, [setValue, value]);
 
   // Close modal when clicking outside
   useEffect(() => {
@@ -222,13 +222,13 @@ export const IconSelectField: React.FC<IconSelectFieldProps> = (props) => {
   }, [fieldIsFocused]);
 
   // Handle reset to defaults
-  const handleResetToDefaults = useCallback(() => {
-    setValue({
-      ...DEFAULT_ICON_CONFIG,
-      name: value.name, // Preserve the selected icon
-    });
-    setShowResetConfirm(false);
-  }, [setValue, value.name]);
+  // const handleResetToDefaults = useCallback(() => {
+  //   setValue({
+  //     ...DEFAULT_ICON_CONFIG,
+  //     name: value.name, // Preserve the selected icon
+  //   });
+  //   setShowResetConfirm(false);
+  // }, [setValue, value.name]);
 
   return (
     <div className="icon-select-field-container">
@@ -236,7 +236,7 @@ export const IconSelectField: React.FC<IconSelectFieldProps> = (props) => {
         <Icon name="palette" size={14} />
         {label}
       </label>
-      <div className="icon-select-field">
+      {/* <div className="icon-select-field">
         <div 
           className="icon-preview"
           onClick={() => setFieldIsFocused(true)}
@@ -570,7 +570,7 @@ export const IconSelectField: React.FC<IconSelectFieldProps> = (props) => {
             )}
           </div>
         )}
-      </div>
+      </div> */}
     </div>
   );
 };

@@ -24,6 +24,7 @@ export type LucideIconPickerOverrides = Partial<{
   label: string;
   required: boolean;
   defaultValue: Partial<LucideIconData>;
+  interfaceName: string;
 }>
 
 export const LucideIconPicker = (overrides: LucideIconPickerOverrides = {}): Field => {
@@ -40,9 +41,7 @@ export const LucideIconPicker = (overrides: LucideIconPickerOverrides = {}): Fie
     },
     admin: {
       components: {
-        Field: {
-          path: 'payload-lucide-picker/admin/components/IconSelectField/index#IconSelectField',
-        },
+        Field: '@/fields/component/index#IconSelectField',
       },
     },
     required: overrides.required || false,

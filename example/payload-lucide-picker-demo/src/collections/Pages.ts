@@ -1,4 +1,4 @@
-import { CollectionConfig } from 'payload/types';
+import type { CollectionConfig } from 'payload'
 import { Features } from '../blocks/Features/config';
 
 export const Pages: CollectionConfig = {
