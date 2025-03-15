@@ -1,5 +1,5 @@
-import { IconSelectField as IconSelectField_0ca3cd63f1c54860ff11dddf46fb8b15 } from 'payload-lucide-picker/src/fields/component/index'
+import { IconSelectField as IconSelectField_9e1f25aff49aea1980cbad6ab3f8407d } from 'payload-lucide-picker/dist/fields/component/index'
 
 export const importMap = {
-  "payload-lucide-picker/src/fields/component/index#IconSelectField": IconSelectField_0ca3cd63f1c54860ff11dddf46fb8b15
+  "payload-lucide-picker/dist/fields/component/index#IconSelectField": IconSelectField_9e1f25aff49aea1980cbad6ab3f8407d
 }

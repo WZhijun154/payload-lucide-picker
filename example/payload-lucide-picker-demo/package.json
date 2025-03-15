@@ -15,16 +15,17 @@
     "start": "cross-env NODE_OPTIONS=--no-deprecation next start"
   },
   "dependencies": {
-    "@payloadcms/db-postgres": "3.15.0",
-    "@payloadcms/next": "3.15.0",
-    "@payloadcms/payload-cloud": "3.15.0",
-    "@payloadcms/richtext-lexical": "3.15.0",
-    "@payloadcms/ui": "3.15.0",
+    "payload-lucide-picker": "file:../../",
+    "@payloadcms/db-postgres": "3.27.0",
+    "@payloadcms/next": "3.27.0",
+    "@payloadcms/payload-cloud": "3.27.0",
+    "@payloadcms/richtext-lexical": "3.27.0",
+    "@payloadcms/ui": "3.27.0",
     "cross-env": "^7.0.3",
     "graphql": "^16.8.1",
     "lucide-react": "^0.479.0",
     "next": "15.2.0",
-    "payload": "3.15.0",
+    "payload": "3.27.0",
     "react": "19.0.0",
     "react-dom": "19.0.0",
     "sharp": "0.32.6"
