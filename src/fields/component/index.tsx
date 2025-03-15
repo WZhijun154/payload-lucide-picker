@@ -5,7 +5,6 @@ import { LucideProps } from 'lucide-react';
 import dynamicIconImports from 'lucide-react/dynamicIconImports';
 import dynamic from 'next/dynamic';
 import { LucideIconPickerType } from '@/fields/lucide-icon-picker';
-import './index.scss';
 
 // Predefined options for size and stroke width
 const PREDEFINED_SIZES = [16, 20, 24, 32, 40, 48, 64];
@@ -231,14 +230,43 @@ export const IconSelectField: React.FC<IconSelectFieldProps> = (props) => {
   }, [setValue, value.name]);
 
   return (
-    <div className="icon-select-field-container">
-      <label className="field-label">
-        <Icon name="palette" size={14} />
+    <div style={{
+      width: '100%',
+      fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif'
+    }}>
+      <label style={{
+        display: 'flex',
+        alignItems: 'center',
+        gap: '6px',
+        marginBottom: '6px',
+        color: 'var(--theme-elevation-800)',
+        fontSize: '12px',
+        fontWeight: 500
+      }}>
+        <Icon name="palette" size={14} style={{color: 'var(--theme-elevation-500)'}} />
         {label}
       </label>
-      <div className="icon-select-field">
+      <div style={{
+        display: 'flex',
+        alignItems: 'center',
+        gap: '8px',
+        marginTop: '8px',
+        position: 'relative'
+      }}>
         <div 
-          className="icon-preview"
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            height: '40px',
+            width: '40px',
+            minWidth: '40px',
+            backgroundColor: 'var(--theme-elevation-50, #f3f3f3)',
+            border: '1px solid var(--theme-elevation-150, #e1e1e1)',
+            borderRadius: '4px',
+            cursor: 'pointer',
+            transition: 'all 0.1s ease-in-out'
+          }}
           onClick={() => setFieldIsFocused(true)}
           tabIndex={0}
           role="button"
@@ -257,17 +285,29 @@ export const IconSelectField: React.FC<IconSelectFieldProps> = (props) => {
               color={value.color}
               strokeWidth={value.strokeWidth}
               absoluteStrokeWidth={value.absoluteStrokeWidth}
-              className="icon-preview__icon"
+              style={{color: 'var(--theme-text, #333)'}}
             />
           ) : (
-            <span className="icon-preview__placeholder">Icon</span>
+            <span style={{
+              color: 'var(--theme-elevation-400, #a6a6a6)',
+              fontSize: '12px'
+            }}>Icon</span>
           )}
         </div>
         
         <input
           type="text"
-          className="icon-select-dropdown"
-          value={value.name ? value.name.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase()) : 'Select an icon...'}
+          style={{
+            flex: 1,
+            height: '40px',
+            border: '1px solid var(--theme-elevation-150, #e1e1e1)',
+            borderRadius: '4px',
+            padding: '0 10px',
+            backgroundColor: 'var(--theme-input-bg, #fff)',
+            color: 'var(--theme-text, #333)',
+            cursor: 'pointer'
+          }}
+          value={value.name ? value.name.replace(/-/g, ' ').replace(/\b\w/g, (c: string) => c.toUpperCase()) : 'Select an icon...'}
           readOnly
           onClick={() => setFieldIsFocused(true)}
           onKeyDown={(e) => {
@@ -282,7 +322,20 @@ export const IconSelectField: React.FC<IconSelectFieldProps> = (props) => {
 
         <button
           type="button"
-          className="icon-config-button"
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            height: '40px',
+            width: '40px',
+            minWidth: '40px',
+            backgroundColor: 'var(--theme-elevation-50, #f3f3f3)',
+            border: '1px solid var(--theme-elevation-150, #e1e1e1)',
+            borderRadius: '4px',
+            cursor: 'pointer',
+            transition: 'all 0.1s ease-in-out',
+            color: 'var(--theme-elevation-800, #525252)'
+          }}
           onClick={(e) => {
             e.preventDefault();
             setShowConfig(!showConfig);
@@ -293,26 +346,76 @@ export const IconSelectField: React.FC<IconSelectFieldProps> = (props) => {
         </button>
         
         {showConfig && (
-          <div className="icon-config-panel">
-            <div className="icon-config-panel__header">
-              <h3>Icon Configuration</h3>
+          <div style={{
+            position: 'absolute',
+            top: '45px',
+            right: 0,
+            width: '300px',
+            backgroundColor: 'var(--theme-bg, #fff)',
+            border: '1px solid var(--theme-elevation-150, #e1e1e1)',
+            borderRadius: '4px',
+            boxShadow: '0 4px 20px rgba(0, 0, 0, 0.15)',
+            zIndex: 10
+          }}>
+            <div style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              padding: '12px 16px',
+              borderBottom: '1px solid var(--theme-elevation-100, #f0f0f0)'
+            }}>
+              <h3 style={{margin: 0, fontSize: '14px', fontWeight: 500}}>Icon Configuration</h3>
               <button 
                 type="button"
                 onClick={() => setShowConfig(false)}
-                className="icon-config-panel__close"
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  background: 'none',
+                  border: 'none',
+                  color: 'var(--theme-elevation-500, #919191)',
+                  cursor: 'pointer',
+                  padding: '4px',
+                  borderRadius: '4px'
+                }}
               >
                 <Icon name="x" size={16} />
               </button>
             </div>
-            <div className="icon-config-panel__content">
-              <div className="icon-config-panel__field">
-                <label htmlFor="icon-size">Size</label>
-                <div className="icon-config-panel__options">
+            <div style={{padding: '16px'}}>
+              <div style={{marginBottom: '16px'}}>
+                <label htmlFor="icon-size" style={{
+                  display: 'block',
+                  fontSize: '12px',
+                  fontWeight: 500,
+                  color: 'var(--theme-elevation-800, #525252)',
+                  marginBottom: '8px'
+                }}>Size</label>
+                <div style={{
+                  display: 'flex',
+                  flexWrap: 'wrap',
+                  gap: '4px',
+                  marginBottom: '8px'
+                }}>
                   {PREDEFINED_SIZES.map((size) => (
                     <button
                       key={size}
                       type="button"
-                      className={`icon-config-panel__option ${value.size === size ? 'icon-config-panel__option--selected' : ''}`}
+                      style={{
+                        padding: '4px 8px',
+                        border: '1px solid var(--theme-elevation-150, #e1e1e1)',
+                        borderRadius: '4px',
+                        background: value.size === size 
+                          ? 'var(--theme-text, #333)' 
+                          : 'var(--theme-elevation-50, #f3f3f3)',
+                        color: value.size === size 
+                          ? 'var(--theme-bg, #fff)' 
+                          : 'var(--theme-text, #333)',
+                        fontSize: '12px',
+                        cursor: 'pointer',
+                        transition: 'all 0.1s ease-in-out'
+                      }}
                       onClick={() => handleConfigChange('size', size)}
                     >
                       {size}
@@ -326,34 +429,66 @@ export const IconSelectField: React.FC<IconSelectFieldProps> = (props) => {
                   onChange={(e) => handleConfigChange('size', parseInt(e.target.value, 10))}
                   min={1}
                   max={100}
-                  className="icon-config-panel__custom-input"
+                  style={{
+                    width: '100%',
+                    height: '32px',
+                    padding: '0 8px',
+                    border: '1px solid var(--theme-elevation-150, #e1e1e1)',
+                    borderRadius: '4px',
+                    fontSize: '13px',
+                    backgroundColor: 'var(--theme-input-bg, #fff)'
+                  }}
                   placeholder="Custom size..."
                 />
               </div>
 
-              <div className="icon-config-panel__field">
-                <label htmlFor="icon-color">
-                  Color
-                </label>
-                <div className="icon-config-panel__color-palette">
+              <div style={{marginBottom: '16px'}}>
+                <label htmlFor="icon-color" style={{
+                  display: 'block',
+                  fontSize: '12px',
+                  fontWeight: 500,
+                  color: 'var(--theme-elevation-800, #525252)',
+                  marginBottom: '8px'
+                }}>Color</label>
+                <div style={{
+                  display: 'flex',
+                  flexWrap: 'wrap',
+                  gap: '4px',
+                  marginBottom: '8px'
+                }}>
                   {COLOR_PALETTE.map((colorOption) => (
                     <button
                       key={colorOption.value}
                       type="button"
-                      className={`icon-config-panel__color ${value.color === colorOption.value ? 'icon-config-panel__color--selected' : ''}`}
-                      onClick={() => handleConfigChange('color', colorOption.value)}
                       style={{
-                        backgroundColor: colorOption.value === 'currentColor' ? undefined : colorOption.value,
-                        border: colorOption.value === '#ffffff' ? '1px solid var(--theme-elevation-150)' : 'none'
+                        padding: '4px 8px',
+                        border: '1px solid var(--theme-elevation-150, #e1e1e1)',
+                        borderRadius: '4px',
+                        background: value.color === colorOption.value 
+                          ? 'var(--theme-text, #333)' 
+                          : 'var(--theme-elevation-50, #f3f3f3)',
+                        color: value.color === colorOption.value 
+                          ? 'var(--theme-bg, #fff)' 
+                          : 'var(--theme-text, #333)',
+                        fontSize: '12px',
+                        cursor: 'pointer',
+                        transition: 'all 0.1s ease-in-out'
                       }}
-                      title={colorOption.tooltip}
-                      aria-label={`Select color: ${colorOption.tooltip}`}
+                      onClick={() => handleConfigChange('color', colorOption.value)}
                     >
-                      {colorOption.value === 'currentColor' && (
+                      {colorOption.value === 'currentColor' ? (
                         <>
                           <Icon name="palette" size={14} />
                           <span>currentColor</span>
                         </>
+                      ) : (
+                        <div style={{
+                          width: '16px',
+                          height: '16px',
+                          backgroundColor: colorOption.value,
+                          borderRadius: '2px',
+                          marginRight: '4px'
+                        }} />
                       )}
                     </button>
                   ))}
@@ -364,18 +499,50 @@ export const IconSelectField: React.FC<IconSelectFieldProps> = (props) => {
                   value={value.color}
                   onChange={(e) => handleConfigChange('color', e.target.value)}
                   placeholder="Custom color (hex, rgb, etc.)"
-                  className="icon-config-panel__custom-input"
+                  style={{
+                    width: '100%',
+                    height: '32px',
+                    padding: '0 8px',
+                    border: '1px solid var(--theme-elevation-150, #e1e1e1)',
+                    borderRadius: '4px',
+                    fontSize: '13px',
+                    backgroundColor: 'var(--theme-input-bg, #fff)'
+                  }}
                 />
               </div>
 
-              <div className="icon-config-panel__field">
-                <label htmlFor="icon-stroke-width">Stroke Width</label>
-                <div className="icon-config-panel__options">
+              <div style={{marginBottom: '16px'}}>
+                <label htmlFor="icon-stroke-width" style={{
+                  display: 'block',
+                  fontSize: '12px',
+                  fontWeight: 500,
+                  color: 'var(--theme-elevation-800, #525252)',
+                  marginBottom: '8px'
+                }}>Stroke Width</label>
+                <div style={{
+                  display: 'flex',
+                  flexWrap: 'wrap',
+                  gap: '4px',
+                  marginBottom: '8px'
+                }}>
                   {PREDEFINED_STROKE_WIDTHS.map((width) => (
                     <button
                       key={width}
                       type="button"
-                      className={`icon-config-panel__option ${value.strokeWidth === width ? 'icon-config-panel__option--selected' : ''}`}
+                      style={{
+                        padding: '4px 8px',
+                        border: '1px solid var(--theme-elevation-150, #e1e1e1)',
+                        borderRadius: '4px',
+                        background: value.strokeWidth === width 
+                          ? 'var(--theme-text, #333)' 
+                          : 'var(--theme-elevation-50, #f3f3f3)',
+                        color: value.strokeWidth === width 
+                          ? 'var(--theme-bg, #fff)' 
+                          : 'var(--theme-text, #333)',
+                        fontSize: '12px',
+                        cursor: 'pointer',
+                        transition: 'all 0.1s ease-in-out'
+                      }}
                       onClick={() => handleConfigChange('strokeWidth', width)}
                     >
                       {width}
@@ -390,13 +557,27 @@ export const IconSelectField: React.FC<IconSelectFieldProps> = (props) => {
                   min={0.1}
                   max={10}
                   step={0.1}
-                  className="icon-config-panel__custom-input"
+                  style={{
+                    width: '100%',
+                    height: '32px',
+                    padding: '0 8px',
+                    border: '1px solid var(--theme-elevation-150, #e1e1e1)',
+                    borderRadius: '4px',
+                    fontSize: '13px',
+                    backgroundColor: 'var(--theme-input-bg, #fff)'
+                  }}
                   placeholder="Custom stroke width..."
                 />
               </div>
 
-              <div className="icon-config-panel__field">
-                <label htmlFor="icon-absolute-stroke">
+              <div style={{marginBottom: '16px'}}>
+                <label htmlFor="icon-absolute-stroke" style={{
+                  display: 'block',
+                  fontSize: '12px',
+                  fontWeight: 500,
+                  color: 'var(--theme-elevation-800, #525252)',
+                  marginBottom: '8px'
+                }}>
                   <input
                     id="icon-absolute-stroke"
                     type="checkbox"
@@ -407,14 +588,39 @@ export const IconSelectField: React.FC<IconSelectFieldProps> = (props) => {
                 </label>
               </div>
 
-              <div className="icon-config-panel__footer">
+              <div style={{marginTop: '16px', display: 'flex', justifyContent: 'space-between'}}>
                 <button
                   type="button"
                   className="icon-config-panel__reset"
                   onClick={() => setShowResetConfirm(true)}
+                  style={{
+                    padding: '8px 16px',
+                    border: 'none',
+                    background: 'none',
+                    color: 'var(--theme-elevation-800, #525252)',
+                    fontSize: '12px',
+                    cursor: 'pointer',
+                    transition: 'all 0.1s ease-in-out'
+                  }}
                 >
                   <Icon name="rotate-ccw" size={14} />
                   Restore Defaults
+                </button>
+                <button
+                  type="button"
+                  className="icon-config-panel__confirm"
+                  onClick={handleResetToDefaults}
+                  style={{
+                    padding: '8px 16px',
+                    border: 'none',
+                    background: 'var(--theme-text, #333)',
+                    color: 'var(--theme-bg, #fff)',
+                    fontSize: '12px',
+                    cursor: 'pointer',
+                    transition: 'all 0.1s ease-in-out'
+                  }}
+                >
+                  Reset to Defaults
                 </button>
               </div>
             </div>
@@ -422,35 +628,108 @@ export const IconSelectField: React.FC<IconSelectFieldProps> = (props) => {
         )}
 
         {showResetConfirm && (
-          <div className="icon-config-confirm">
-            <div className="icon-config-confirm__content">
-              <div className="icon-config-confirm__header">
-                <h3>Reset Configuration</h3>
+          <div style={{
+            position: 'fixed',
+            inset: 0,
+            backgroundColor: 'rgba(0, 0, 0, 0.5)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            zIndex: 20
+          }}>
+            <div style={{
+              width: '100%',
+              maxWidth: '400px',
+              backgroundColor: 'var(--theme-bg, #fff)',
+              borderRadius: '6px',
+              boxShadow: '0 4px 20px rgba(0, 0, 0, 0.2)'
+            }}>
+              <div style={{
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+                padding: '16px',
+                borderBottom: '1px solid var(--theme-elevation-100, #f0f0f0)'
+              }}>
+                <h3 style={{
+                  margin: 0,
+                  fontSize: '16px',
+                  fontWeight: 500,
+                  color: 'var(--theme-text, #333)'
+                }}>Reset Configuration</h3>
                 <button 
                   type="button"
                   onClick={() => setShowResetConfirm(false)}
-                  className="icon-config-confirm__close"
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    background: 'none',
+                    border: 'none',
+                    color: 'var(--theme-elevation-500, #919191)',
+                    cursor: 'pointer',
+                    padding: '4px',
+                    borderRadius: '4px'
+                  }}
                 >
                   <Icon name="x" size={16} />
                 </button>
               </div>
-              <div className="icon-config-confirm__body">
-                <p>Are you sure you want to restore default configuration?</p>
-                <p className="icon-config-confirm__note">
+              <div style={{
+                padding: '16px'
+              }}>
+                <p style={{
+                  margin: 0,
+                  color: 'var(--theme-text, #333)',
+                  fontSize: '14px',
+                  lineHeight: 1.5,
+                  fontWeight: 500,
+                  marginBottom: '8px'
+                }}>Are you sure you want to restore default configuration?</p>
+                <p style={{
+                  margin: 0,
+                  color: 'var(--theme-elevation-600, #666)',
+                  fontSize: '13px',
+                  lineHeight: 1.5
+                }}>
                   This will reset size, color, stroke width, and absolute stroke settings to their default values. The selected icon will be preserved.
                 </p>
               </div>
-              <div className="icon-config-confirm__actions">
+              <div style={{
+                display: 'flex',
+                justifyContent: 'flex-end',
+                gap: '8px',
+                padding: '16px',
+                borderTop: '1px solid var(--theme-elevation-100, #f0f0f0)'
+              }}>
                 <button
                   type="button"
-                  className="icon-config-confirm__cancel"
+                  style={{
+                    padding: '8px 16px',
+                    background: 'var(--theme-elevation-50, #f3f3f3)',
+                    border: '1px solid var(--theme-elevation-150, #e1e1e1)',
+                    borderRadius: '4px',
+                    color: 'var(--theme-text, #333)',
+                    fontSize: '14px',
+                    cursor: 'pointer',
+                    transition: 'all 0.1s ease-in-out'
+                  }}
                   onClick={() => setShowResetConfirm(false)}
                 >
                   Cancel
                 </button>
                 <button
                   type="button"
-                  className="icon-config-confirm__confirm"
+                  style={{
+                    padding: '8px 16px',
+                    background: 'var(--theme-error-600, #dc2626)',
+                    border: '1px solid var(--theme-error-700, #b91c1c)',
+                    borderRadius: '4px',
+                    color: 'white',
+                    fontSize: '14px',
+                    cursor: 'pointer',
+                    transition: 'all 0.1s ease-in-out'
+                  }}
                   onClick={handleResetToDefaults}
                 >
                   Reset to Defaults
@@ -462,15 +741,50 @@ export const IconSelectField: React.FC<IconSelectFieldProps> = (props) => {
         
         {fieldIsFocused && (
           <div 
-            className="icon-picker-modal"
+            style={{
+              position: 'absolute',
+              top: '45px',
+              left: 0,
+              width: '100%',
+              maxWidth: '580px',
+              backgroundColor: 'var(--theme-bg, #fff)',
+              border: '1px solid var(--theme-elevation-150, #e1e1e1)',
+              borderRadius: '4px',
+              boxShadow: '0 4px 20px rgba(0, 0, 0, 0.15)',
+              zIndex: 10,
+              overflow: 'hidden',
+              display: 'flex',
+              flexDirection: 'column'
+            }}
             aria-label="Icon Picker"
             role="dialog"
           >
-            <div className="icon-picker-modal__header">
-              <h2 className="icon-picker-modal__title">Select an Icon</h2>
+            <div style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              padding: '12px 16px',
+              borderBottom: '1px solid var(--theme-elevation-100, #f0f0f0)'
+            }}>
+              <h2 style={{
+                margin: 0,
+                fontSize: '16px',
+                fontWeight: 500,
+                color: 'var(--theme-text, #333)'
+              }}>Select an Icon</h2>
               <button 
                 type="button"
-                className="icon-picker-modal__close"
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  background: 'none',
+                  border: 'none',
+                  color: 'var(--theme-elevation-500, #919191)',
+                  cursor: 'pointer',
+                  padding: '4px',
+                  borderRadius: '4px'
+                }}
                 onClick={(e) => {
                   e.preventDefault();
                   setFieldIsFocused(false);
@@ -482,38 +796,86 @@ export const IconSelectField: React.FC<IconSelectFieldProps> = (props) => {
               </button>
             </div>
             
-            <div className="icon-picker-modal__search">
+            <div style={{
+              padding: '12px 16px',
+              borderBottom: '1px solid var(--theme-elevation-100, #f0f0f0)'
+            }}>
               <input
                 type="search"
                 placeholder={hoveredIcon || "Search icons..."}
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                className="icon-picker-modal__search-input"
+                style={{
+                  width: '100%',
+                  height: '36px',
+                  padding: '0 12px',
+                  border: '1px solid var(--theme-elevation-150, #e1e1e1)',
+                  borderRadius: '4px',
+                  backgroundColor: 'var(--theme-input-bg, #fff)'
+                }}
                 autoFocus
               />
             </div>
             
-            <div className="icon-picker-modal__pagination-info">
+            <div style={{
+              padding: '8px 16px',
+              fontSize: '12px',
+              color: 'var(--theme-elevation-500, #919191)',
+              borderBottom: '1px solid var(--theme-elevation-100, #f0f0f0)'
+            }}>
               Showing {paginatedIcons.length} of {filteredIcons.length} icons
             </div>
             
-            <div className="icon-picker-modal__icons">
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fill, minmax(80px, 1fr))',
+              gap: '8px',
+              padding: '16px',
+              maxHeight: '320px',
+              overflowY: 'auto'
+            }}>
               {paginatedIcons.length > 0 ? (
                 paginatedIcons.map((iconName) => (
                   <button
                     key={iconName}
                     type="button"
-                    className={`icon-picker-modal__icon ${value.name === iconName ? 'icon-picker-modal__icon--selected' : ''}`}
+                    style={{
+                      display: 'flex',
+                      flexDirection: 'column',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      gap: '4px',
+                      padding: '8px 4px',
+                      background: value.name === iconName ? 'var(--theme-elevation-100, #f0f0f0)' : 'none',
+                      border: `1px solid ${value.name === iconName ? 
+                        'var(--theme-elevation-300, #c1c1c1)' : 
+                        'var(--theme-elevation-100, #f0f0f0)'}`,
+                      borderRadius: '4px',
+                      cursor: 'pointer',
+                      transition: 'all 0.1s ease-in-out',
+                      position: 'relative'
+                    }}
                     onClick={(e) => {
                       e.preventDefault();
                       handleIconSelect(iconName);
                     }}
                     onMouseOver={() => setHoveredIcon(iconName)}
                     onMouseOut={() => setHoveredIcon(null)}
-                    title={iconName.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase())}
+                    title={iconName.replace(/-/g, ' ').replace(/\b\w/g, (c: string) => c.toUpperCase())}
                     aria-selected={value.name === iconName}
                     aria-label={iconName.replace(/-/g, ' ')}
                   >
+                    {value.name === iconName && (
+                      <div style={{
+                        position: 'absolute',
+                        top: '4px',
+                        right: '4px',
+                        width: '8px',
+                        height: '8px',
+                        borderRadius: '50%',
+                        backgroundColor: 'var(--theme-success, #4caf50)'
+                      }} />
+                    )}
                     <Icon 
                       name={iconName as keyof typeof dynamicIconImports} 
                       size={value.size}
@@ -521,20 +883,41 @@ export const IconSelectField: React.FC<IconSelectFieldProps> = (props) => {
                       strokeWidth={value.strokeWidth}
                       absoluteStrokeWidth={value.absoluteStrokeWidth}
                     />
-                    <span className="icon-picker-modal__icon-name">
+                    <span style={{
+                      fontSize: '10px',
+                      color: 'var(--theme-elevation-800, #525252)',
+                      textAlign: 'center',
+                      whiteSpace: 'nowrap',
+                      overflow: 'hidden',
+                      textOverflow: 'ellipsis',
+                      maxWidth: '100%'
+                    }}>
                       {iconName.replace(/-/g, ' ')}
                     </span>
                   </button>
                 ))
               ) : (
-                <div className="icon-picker-modal__no-results">
+                <div style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  padding: '32px',
+                  color: 'var(--theme-elevation-500, #919191)',
+                  fontStyle: 'italic'
+                }}>
                   No icons found matching {debouncedSearch}
                 </div>
               )}
             </div>
             
             {totalPages > 1 && (
-              <div className="icon-picker-modal__pagination">
+              <div style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                padding: '12px 16px',
+                borderTop: '1px solid var(--theme-elevation-100, #f0f0f0)'
+              }}>
                 <button
                   type="button"
                   onClick={(e) => {
@@ -542,14 +925,30 @@ export const IconSelectField: React.FC<IconSelectFieldProps> = (props) => {
                     setPage(p => Math.max(0, p - 1));
                   }}
                   disabled={page === 0}
-                  className="icon-picker-modal__pagination-button"
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '4px',
+                    padding: '6px 12px',
+                    backgroundColor: 'var(--theme-elevation-50, #f3f3f3)',
+                    border: '1px solid var(--theme-elevation-150, #e1e1e1)',
+                    borderRadius: '4px',
+                    color: 'var(--theme-text, #333)',
+                    fontSize: '14px',
+                    cursor: page === 0 ? 'not-allowed' : 'pointer',
+                    transition: 'all 0.1s ease-in-out',
+                    opacity: page === 0 ? 0.5 : 1
+                  }}
                   aria-label="Previous page"
                 >
                   <Icon name="chevron-left" size={16} />
                   Previous
                 </button>
                 
-                <span className="icon-picker-modal__pagination-text">
+                <span style={{
+                  fontSize: '14px',
+                  color: 'var(--theme-elevation-600, #666)'
+                }}>
                   Page {page + 1} of {totalPages}
                 </span>
                 
@@ -560,7 +959,20 @@ export const IconSelectField: React.FC<IconSelectFieldProps> = (props) => {
                     setPage(p => Math.min(totalPages - 1, p + 1));
                   }}
                   disabled={page === totalPages - 1}
-                  className="icon-picker-modal__pagination-button"
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '4px',
+                    padding: '6px 12px',
+                    backgroundColor: 'var(--theme-elevation-50, #f3f3f3)',
+                    border: '1px solid var(--theme-elevation-150, #e1e1e1)',
+                    borderRadius: '4px',
+                    color: 'var(--theme-text, #333)',
+                    fontSize: '14px',
+                    cursor: page === totalPages - 1 ? 'not-allowed' : 'pointer',
+                    transition: 'all 0.1s ease-in-out',
+                    opacity: page === totalPages - 1 ? 0.5 : 1
+                  }}
                   aria-label="Next page"
                 >
                   Next

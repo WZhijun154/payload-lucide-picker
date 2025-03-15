@@ -6,13 +6,13 @@
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
-  "style": "dist/index.css",
+  "style": "dist/fields/component/index.css",
   "files": [
     "dist",
     "README.md"
   ],
   "scripts": {
-    "build": "tsup",
+    "build": "tsup --config tsup.config.ts",
     "dev": "tsup --watch",
     "clean": "rimraf dist",
     "lint": "eslint src --ext .ts,.tsx",
@@ -40,25 +40,28 @@
   },
   "homepage": "https://github.com/Vectras/payload-lucide-picker/blob/master/README.md",
   "peerDependencies": {
+    "lucide-react": "^0.344.0",
     "next": "^15.0.0",
-    "react": "^19.0.0",
     "payload": "^3.2.2",
-    "lucide-react": "^0.344.0"
+    "react": "^19.0.0"
   },
   "devDependencies": {
+    "@payloadcms/ui": "^3.2.2",
     "@types/node": "^20.11.24",
     "@types/react": "^19.0.0",
-    "@payloadcms/ui": "^3.2.2",
     "@typescript-eslint/eslint-plugin": "^7.1.0",
     "@typescript-eslint/parser": "^7.1.0",
+    "autoprefixer": "^10.4.21",
     "eslint": "^9.0.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.1.3",
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
+    "postcss": "^8.5.3",
     "prettier": "^3.2.5",
     "rimraf": "^5.0.5",
-    "sass": "^1.71.1",
+    "sass": "^1.85.1",
+    "tailwindcss": "^4.0.14",
     "tsup": "^8.0.2",
     "typescript": "^5.3.3"
   },
