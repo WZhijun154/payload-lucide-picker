@@ -2,7 +2,7 @@ import { defineConfig } from 'tsup';
 
 export default defineConfig({
   entry: {
-    index: 'src/index.ts',
+    index: 'src/index.tsx',
     'fields/component/index': 'src/fields/component/index.tsx'
   },
   format: ['cjs', 'esm'],
@@ -11,4 +11,4 @@ export default defineConfig({
   sourcemap: true,
   clean: true,
   external: ['react', 'react-dom', '@payloadcms/ui', 'lucide-react', 'payload'],
-}); 
+});
