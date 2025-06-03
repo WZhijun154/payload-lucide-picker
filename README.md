@@ -24,54 +24,68 @@ yarn add payload-lucide-picker
 
 ## Usage
 
-1. Import the field in your Payload config:
+1. Import and use the field in your Payload config:
 
 ```typescript
+import { Block } from 'payload';
 import { LucideIconPicker } from 'payload-lucide-picker';
 
-// In your collection config
-{
+export const MyBlock: Block = {
+  slug: 'my-block',
   fields: [
-    {
+    // Use as a single field
+    LucideIconPicker({
       name: 'icon',
-      type: 'lucide-icon',
-      required: true,
       label: 'Select an Icon',
-      admin: {
-        description: 'Choose an icon and configure its appearance'
-      }
-    }
-  ]
-}
+      required: true,
+    }),
+
+    // Or within an array of fields
+    {
+      name: 'links',
+      type: 'array',
+      fields: [
+        LucideIconPicker({
+          name: 'icon',
+          label: 'Link Icon',
+          required: true,
+        }),
+        {
+          name: 'title',
+          type: 'text',
+          required: true,
+        },
+        // ... other fields
+      ],
+    },
+  ],
+};
 ```
 
-2. The field will store the icon configuration in the following format:
+2. The field will store the icon configuration with type `LucideIconPickerType`:
 
 ```typescript
-{
+interface LucideIconPickerType {
   name: string;
-  config: {
-    size: number;
-    color: string;
-    strokeWidth: number;
-  }
+  size?: number;
+  color?: string;
+  strokeWidth?: number;
+  absoluteStrokeWidth?: boolean;
 }
 ```
 
-3. Use the icon in your frontend:
+3. Use the icon in your frontend with the provided `getLucideIcon` helper:
 
 ```typescript
-import { Icon } from 'lucide-react';
+import { getLucideIcon } from 'payload-lucide-picker';
 
 const MyComponent = ({ icon }) => {
-  const IconComponent = Icon[icon.name];
-  
+  const Icon = getLucideIcon(icon); // Returns an icon component
+
   return (
-    <IconComponent
-      size={icon.config.size}
-      color={icon.config.color}
-      strokeWidth={icon.config.strokeWidth}
-    />
+    <div>
+      <Icon className="h-6 w-6 text-blue-500" /> {/* Override size and color with Tailwind classes */}
+    </div>
   );
 };
 ```
