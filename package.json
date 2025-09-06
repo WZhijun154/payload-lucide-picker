@@ -1,6 +1,6 @@
 {
   "name": "payload-lucide-picker",
-  "version": "1.6.1",
+  "version": "1.6.2",
   "description": "A custom field for Payload CMS that allows you to select and configure Lucide icons in your admin panel",
   "type": "module",
   "main": "dist/index.js",
@@ -40,7 +40,7 @@
   },
   "homepage": "https://github.com/Vectras/payload-lucide-picker/blob/master/README.md",
   "peerDependencies": {
-    "lucide-react": "^0.344.0",
+    "lucide-react": "^0.542.0",
     "next": "^15.0.0",
     "payload": "^3.2.2",
     "react": "^19.0.0"
