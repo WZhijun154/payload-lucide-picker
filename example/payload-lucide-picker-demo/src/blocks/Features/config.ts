@@ -1,5 +1,5 @@
 import { Block, Field } from 'payload';
-import { LucideIconPicker } from 'payload-lucide-picker';
+import { LucideIconPicker } from 'payload-lucide-picker-next';
 
 export const Features: Block = {
   slug: 'features',
