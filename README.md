@@ -103,4 +103,4 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## License
 
-MIT © [Vectras](https://github.com/Vectras)
+MIT © [wangzhijun](https://github.com/wangzhijun)

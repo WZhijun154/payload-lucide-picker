@@ -29,16 +29,16 @@
     "field",
     "custom-field"
   ],
-  "author": "vectras",
+  "author": "wangzhijun",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Vectras/payload-lucide-picker.git"
+    "url": "https://github.com/WZhijun154/payload-lucide-picker.git"
   },
   "bugs": {
-    "url": "https://github.com/Vectras/payload-lucide-picker/issues"
+    "url": "https://github.com/WZhijun154/payload-lucide-picker/issues"
   },
-  "homepage": "https://github.com/Vectras/payload-lucide-picker/blob/master/README.md",
+  "homepage": "https://github.com/WZhijun154/payload-lucide-picker#readme",
   "peerDependencies": {
     "lucide-react": "^0.542.0",
     "next": "^15.0.0",
