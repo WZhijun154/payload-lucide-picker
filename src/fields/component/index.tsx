@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import { useField } from '@payloadcms/ui';
 import { LucideProps } from 'lucide-react';
-import { DynamicIcon, iconNames } from 'lucide-react/dynamic';
+import { DynamicIcon, iconNames } from 'lucide-react/dynamic.mjs';
 import { LucideIconPickerType } from '@/fields/lucide-icon-picker';
 
 // Predefined options for size and stroke width

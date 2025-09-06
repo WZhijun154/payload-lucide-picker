@@ -23,6 +23,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Refactor to use `DynamicIcon` component and `iconNames` from `lucide-react/dynamic` across the library and admin field UI
 - Remove direct usage of `next/dynamic` and manual caching
 
+## [1.6.5] - 2025-09-06
+
+### Fixed
+- Import from `lucide-react/dynamic.mjs` to align with Next.js resolver behavior
+- Add ambient types for `lucide-react/dynamic.mjs` to satisfy DTS build
+
 ## [1.0.0] - 2024-03-19
 
 ### Added
