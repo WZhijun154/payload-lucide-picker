@@ -1,6 +1,6 @@
 {
   "name": "payload-lucide-picker-next",
-  "version": "1.6.2",
+  "version": "1.6.3",
   "description": "A custom field for Payload CMS that allows you to select and configure Lucide icons in your admin panel",
   "type": "module",
   "main": "dist/index.js",

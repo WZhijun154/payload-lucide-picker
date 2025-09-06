@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import { useField } from '@payloadcms/ui';
 import { LucideProps } from 'lucide-react';
-import dynamicIconImports from 'lucide-react/dynamicIconImports';
+import { dynamicIconImports } from 'lucide-react/dynamic';
 import dynamic from 'next/dynamic';
 import { LucideIconPickerType } from '@/fields/lucide-icon-picker';
 

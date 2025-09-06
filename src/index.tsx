@@ -2,7 +2,7 @@ import React from "react";
 // import * as LucideIcons from "lucide-react";
 import { LucideIconPicker } from "./fields/lucide-icon-picker";
 import type { LucideIconPickerType } from "./fields/lucide-icon-picker";
-import dynamicIconImports from "lucide-react/dynamicIconImports";
+import { dynamicIconImports } from "lucide-react/dynamic";
 import { HelpCircle } from "lucide-react";
 import type { LucideProps } from "lucide-react";
 import dynamic from 'next/dynamic';
@@ -36,7 +36,6 @@ export const getLucideIcon = (iconConfig: LucideIconPickerType) => {
       );
     };
   };
-
 
 
 

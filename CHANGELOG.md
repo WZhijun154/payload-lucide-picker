@@ -11,6 +11,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Update peer dependency `lucide-react` to `^0.542.0`
 - Demo app dependency `lucide-react` bumped to `^0.542.0`
 
+## [1.6.3] - 2025-09-06
+
+### Fixed
+- Use `lucide-react/dynamic` entrypoint for dynamic icon imports (fixes Next.js module resolution for latest Lucide)
+- Rename package to `payload-lucide-picker-next` to publish under current account
+
 ## [1.0.0] - 2024-03-19
 
 ### Added
