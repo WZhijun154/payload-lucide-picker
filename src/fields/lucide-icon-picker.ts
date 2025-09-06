@@ -43,7 +43,7 @@ export const LucideIconPicker = (overrides: LucideIconPickerOverrides = {}): Fie
     admin: {
       components: {
         Field: {
-          path: 'payload-lucide-picker/dist/fields/component/index#IconSelectField',
+          path: '@wzhijun154/payload-lucide-picker/dist/fields/component/index#IconSelectField',
         },
       },
     },
