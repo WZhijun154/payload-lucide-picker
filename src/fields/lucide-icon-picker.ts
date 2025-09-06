@@ -1,5 +1,4 @@
 import { Field } from 'payload';
-import { dynamicIconImports } from "lucide-react/dynamic";
 
 // Define the icon configuration type
 export interface LucideIconPickerType {

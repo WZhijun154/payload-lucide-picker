@@ -17,6 +17,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Use `lucide-react/dynamic` entrypoint for dynamic icon imports (fixes Next.js module resolution for latest Lucide)
 - Rename package to `payload-lucide-picker-next` to publish under current account
 
+## [1.6.4] - 2025-09-06
+
+### Changed
+- Refactor to use `DynamicIcon` component and `iconNames` from `lucide-react/dynamic` across the library and admin field UI
+- Remove direct usage of `next/dynamic` and manual caching
+
 ## [1.0.0] - 2024-03-19
 
 ### Added

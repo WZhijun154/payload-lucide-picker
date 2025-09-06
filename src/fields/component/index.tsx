@@ -2,8 +2,7 @@
 import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import { useField } from '@payloadcms/ui';
 import { LucideProps } from 'lucide-react';
-import { dynamicIconImports } from 'lucide-react/dynamic';
-import dynamic from 'next/dynamic';
+import { DynamicIcon, iconNames } from 'lucide-react/dynamic';
 import { LucideIconPickerType } from '@/fields/lucide-icon-picker';
 
 // Predefined options for size and stroke width
@@ -95,20 +94,11 @@ type IconSelectFieldProps = {
 }
 
 interface IconProps extends LucideProps {
-  name: keyof typeof dynamicIconImports;
+  name: string;
 }
 
-// Preload and cache icons to improve performance
-const iconCache: Record<string, React.ComponentType<LucideProps>> = {};
-
 const Icon = React.memo(({ name, ...props }: IconProps) => {
-  // Use cached icon component if available
-  if (!iconCache[name]) {
-    iconCache[name] = dynamic(dynamicIconImports[name]);
-  }
-
-  const LucideIcon = iconCache[name];
-  return <LucideIcon {...props} />;
+  return <DynamicIcon name={name as any} {...props} />;
 });
 
 Icon.displayName = 'Icon';
@@ -137,10 +127,7 @@ export const IconSelectField: React.FC<IconSelectFieldProps> = (props) => {
   const debouncedSearch = useDebounce(search, 300);
   
   // Memoize all icons
-  const allIcons = useMemo(() => 
-    Object.keys(dynamicIconImports).sort(),
-    []
-  );
+  const allIcons = useMemo(() => [...iconNames].sort(), []);
 
   // Filter icons based on debounced search
   const filteredIcons = useMemo(() => {
@@ -161,17 +148,8 @@ export const IconSelectField: React.FC<IconSelectFieldProps> = (props) => {
     );
   }, [filteredIcons, page]);
 
-  // Preload common icons on component mount for fast initial render
-  useEffect(() => {
-    const popularIcons = ['check', 'x', 'user', 'settings', 'home', 'search']
-      .filter(name => name in dynamicIconImports);
-    
-    popularIcons.forEach(name => {
-      if (!iconCache[name]) {
-        iconCache[name] = dynamic(dynamicIconImports[name as keyof typeof dynamicIconImports]);
-      }
-    });
-  }, []);
+  // No explicit preloading needed with DynamicIcon
+  useEffect(() => {}, []);
 
   // Reset page when search changes
   useEffect(() => {
@@ -280,7 +258,7 @@ export const IconSelectField: React.FC<IconSelectFieldProps> = (props) => {
         >
           {value.name ? (
             <Icon 
-              name={value.name as keyof typeof dynamicIconImports}
+              name={value.name as string}
               size={value.size}
               color={value.color}
               strokeWidth={value.strokeWidth}
@@ -877,7 +855,7 @@ export const IconSelectField: React.FC<IconSelectFieldProps> = (props) => {
                       }} />
                     )}
                     <Icon 
-                      name={iconName as keyof typeof dynamicIconImports} 
+                      name={iconName as string} 
                       size={value.size}
                       color={value.color}
                       strokeWidth={value.strokeWidth}
