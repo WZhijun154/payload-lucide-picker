@@ -13,13 +13,13 @@ A custom field for [Payload CMS](https://payloadcms.com/) that allows you to sel
 
 ```bash
 # Using pnpm
-pnpm add @wzhijun154/payload-lucide-picker
+pnpm add payload-lucide-picker-next
 
 # Using npm
-npm install @wzhijun154/payload-lucide-picker
+npm install payload-lucide-picker-next
 
 # Using yarn
-yarn add @wzhijun154/payload-lucide-picker
+yarn add payload-lucide-picker-next
 ```
 
 ## Usage
@@ -28,7 +28,7 @@ yarn add @wzhijun154/payload-lucide-picker
 
 ```typescript
 import { Block } from 'payload';
-import { LucideIconPicker } from '@wzhijun154/payload-lucide-picker';
+import { LucideIconPicker } from 'payload-lucide-picker-next';
 
 export const MyBlock: Block = {
   slug: 'my-block',
@@ -77,7 +77,7 @@ interface LucideIconPickerType {
 3. Use the icon in your frontend with the provided `getLucideIcon` helper:
 
 ```typescript
-import { getLucideIcon } from '@wzhijun154/payload-lucide-picker';
+import { getLucideIcon } from 'payload-lucide-picker-next';
 
 const MyComponent = ({ icon }) => {
   const Icon = getLucideIcon(icon); // Returns an icon component

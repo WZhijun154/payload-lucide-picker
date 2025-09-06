@@ -1,5 +1,5 @@
 {
-  "name": "@wzhijun154/payload-lucide-picker",
+  "name": "payload-lucide-picker-next",
   "version": "1.6.2",
   "description": "A custom field for Payload CMS that allows you to select and configure Lucide icons in your admin panel",
   "type": "module",
